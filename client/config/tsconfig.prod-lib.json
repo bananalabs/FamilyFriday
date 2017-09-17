@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "declaration": true,
+    "declarationDir": "..",
+    "noImplicitAny": false,
+    "rootDirs": ["../src", "../node_modules"],
+    "typeRoots": ["../node_modules/@types"],
+    "outDir": "../dist/lib",
+    "sourceMap": true,
+    "removeComments": false,
+    "jsx": "react",
+    "allowSyntheticDefaultImports": true,
+    "baseUrl": "../src",
+    "experimentalDecorators": true
+  },
+  "include": [
+    "../src"
+  ],
+  "exclude": [
+    "../app",
+    "../node_modules",
+    "../test",
+    "../src/**/*test.ts*",
+    "../src/**/test/*",
+    "../**/tests/*"
+  ]
+}

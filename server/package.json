@@ -1,0 +1,18 @@
+{
+  "name": "family-friday-server",
+  "description": "Lightweight feathersjs server with sqlite",
+  "main": "app.js",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "feathers": "^2.1.4",
+    "feathers-rest": "^1.7.2",
+    "feathers-sequelize": "^1.4.5",
+    "path": "^0.12.7",
+    "sequelize": "^3.30.4",
+    "sqlite": "^2.8.0",
+    "sqlite3": "^3.1.11"
+  },
+  "private": true
+}
