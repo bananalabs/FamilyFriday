@@ -112,17 +112,6 @@
       "_:remap-coverage:dev:_"
     ]
   },
-  "pre-commit": [
-    "test:dev",
-    "build:prod",
-    "_:git-mods:allow-staged-mods:_"
-  ],
-  "pre-push": [
-    "test:prod",
-    "build:all",
-    "secure",
-    "_:git-mods:nothing-to-commit:_"
-  ],
   "keywords": [
     "TypeScript",
     "starter",

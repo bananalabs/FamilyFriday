@@ -1,0 +1,9 @@
+{
+  "name": "family-friday",
+  "version": "1.0.0",
+  "description": "Family Friday",
+  "scripts": {
+    "install": "cd client; npm install; cd ../server; npm install; cd ..",
+    "start": "cd server; node --harmony app.js; cd ../client; npm run build:dev; npm run dev"
+  }
+}

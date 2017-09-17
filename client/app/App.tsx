@@ -1,21 +1,21 @@
 import * as React from 'react';
-import Groups from './Groups';
-import AddEmployee from './AddEmployee';
-import { Route } from 'react-router-dom';
+import * as fetch from 'isomorphic-fetch';
 
-const App = () => {
+export interface Props {
+  children: any;
+}
+
+const App = (props: Props) => {
+  const style = {
+    textAlign: 'center',
+    marginTop: '2%'
+  };
   return (
     <div>
-      <button>
-        <a href='/groups'>I'm hungry. Let's eat!</a>
-      </button>
-      <button>
-        <a href='/addEmployee'>Newhire. Come join us!</a>
-      </button>
-      <br/>
-      <br/>
-      <Route path='/groups' component={Groups}/>
-      <Route path='/addEmployee' component={AddEmployee}/>
+      <h2 style={style}>
+        <a style={{textDecoration: 'none', color: 'black'}} href='/'>Family Friday</a>
+      </h2>
+      {props.children}
     </div>
   );
 };

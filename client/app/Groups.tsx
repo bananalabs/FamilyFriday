@@ -36,16 +36,26 @@ class Groups extends React.Component<any, State> {
     .catch((err) => { throw Error(err); });
   }
 
-  renderGroups(list) {
+  renderList(header: string, items: string[]) {
+    return (
+      <div className='col-md-auto'>
+        <ul className='list-group'>
+          <li className='list-group-item active'>{header}</li>
+          {items.map((item) => <li className='list-group-item'>{item}</li>)}
+        </ul>
+      </div>
+    );
+  }
+
+  renderGroups(list: string[]): any {
     shuffle(list);
-    let groups = computeGroups(list.length, MIN_GROUP_SIZE, MAX_GROUP_SIZE);
-    let rendered = [];
-    let len = 0;
-    groups.map((val, index) => {
-      rendered.push(<div>Group {index + 1}</div>);
-      for (let i = 0; i < val; i++) {
-        rendered.push(<p>{list[len + i]}</p>);
-      }
+    console.log(list);
+    let groups: number[] = computeGroups(list.length, MIN_GROUP_SIZE, MAX_GROUP_SIZE);
+    console.log(groups);
+    let rendered: any[] = [];
+    let len: number = 0;
+    groups.map((val: number, index: number) => {
+      rendered.push(this.renderList('Group' + (index + 1), list.slice(len, len + val)));
       len += val;
     });
     return rendered;
@@ -54,7 +64,7 @@ class Groups extends React.Component<any, State> {
   render() {
     const groups = this.renderGroups(this.state.employees);
     return (
-      <div>{groups}</div>
+      <div className='row' style={{margin: 'auto'}}>{groups}</div>
     );
   }
 }
