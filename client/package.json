@@ -137,7 +137,7 @@
     "@types/redux-devtools-log-monitor": "^1.0.29",
     "@types/sinon": "^2.3.2",
     "blanket": "^1.2.3",
-    "chai": "^4.0.2",
+    "chai": "^4.1.2",
     "chalk": "^2.0.1",
     "clean-webpack-plugin": "^0.1.14",
     "commander": "^2.9.0",
