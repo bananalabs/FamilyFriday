@@ -1,1 +1,5 @@
 ./server/db.sqlite
+./client/node_modules
+./client/dist
+./client/build
+./server/node_modules

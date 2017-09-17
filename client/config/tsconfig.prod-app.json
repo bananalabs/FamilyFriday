@@ -24,6 +24,7 @@
     "../build",
     "../src/**/*test.ts*",
     "../src/**/test/*",
+    "../app/**/test/*",
     "../**/tests/*"
   ]
 }
