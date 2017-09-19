@@ -42,8 +42,8 @@ class AddEmployee extends React.Component<any, State> {
         <input type='text' className='form-control' placeholder='Employee Name'
               style={{width: '50%'}} onChange={this.handleChange.bind(this)}/>
         <br/>
-        <button type='button' className='btn btn-primary'
-                onClick={this.onAdd.bind(this)}>Add</button>
+        <a className='btn btn-primary' href='/'
+           onClick={this.onAdd.bind(this)}>Add</a>
       </div>
     );
   }
