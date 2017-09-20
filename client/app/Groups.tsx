@@ -9,7 +9,7 @@ const MIN_GROUP_SIZE = 3;
 const MAX_GROUP_SIZE = 5;
 
 export interface State {
-  employees: string[];
+  employees: any[];
 }
 
 class Groups extends React.Component<any, State> {
@@ -30,24 +30,46 @@ class Groups extends React.Component<any, State> {
     // Get employees
     let self = this;
     this.fetchData()
-    .then((data) => self.setState({
-      employees: data.map((val) => val.name)
-    }))
+    /* .then((data) => self.setState({
+      employees: data.map((val) => { return {
+        name: val.name,
+        outOfOffice: false
+      }; } )
+    })) */
+    .then((data) => {
+      const employees = data.map((val) => {
+        return {
+          name: val.name,
+          outOfOffice: false
+        };
+      });
+      self.setState({employees: employees});
+    })
     .catch((err) => { throw Error(err); });
   }
 
-  renderList(header: string, items: string[]) {
+  handleCheck(employee, event) {
+    let employees = this.state.employees;
+    let selectedEmployee = employees.find((val) => val.name === employee.name);
+    selectedEmployee.outOfOffice = event.target.checked;
+    this.setState({employees: employees});
+  }
+
+  renderList(header: string, items: any[]) {
     return (
       <div className='col-md-auto'>
         <ul className='list-group'>
           <li className='list-group-item active'>{header}</li>
-          {items.map((item) => <li className='list-group-item'>{item}</li>)}
+          {items.map((item) => <li className='list-group-item'>
+            {item.name}
+            <input type='checkbox' onChange={this.handleCheck.bind(this, item)}/>
+          </li>)}
         </ul>
       </div>
     );
   }
 
-  renderGroups(list: string[]): any {
+  renderGroups(list: any[]): any {
     shuffle(list);
     console.log(list);
     let groups: number[] = computeGroups(list.length, MIN_GROUP_SIZE, MAX_GROUP_SIZE);
@@ -62,7 +84,8 @@ class Groups extends React.Component<any, State> {
   }
 
   render() {
-    const groups = this.renderGroups(this.state.employees);
+    const groups = this.renderGroups(
+      this.state.employees.filter((val) => val.outOfOffice === false));
     return (
       <div className='row' style={{margin: 'auto'}}>{groups}</div>
     );

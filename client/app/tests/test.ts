@@ -29,4 +29,8 @@ describe('computeGroups', () => {
     expect(JSON.stringify(computeGroups(26, MIN_GROUP_SIZE, MAX_GROUP_SIZE))).to.equal(
       JSON.stringify([5,5,5,5,3,3]));
   });
+  it('should compute the groups correctly for size = not a factor of MAX_GROUP_SIZE', () => {
+    expect(JSON.stringify(computeGroups(17, MIN_GROUP_SIZE, MAX_GROUP_SIZE))).to.equal(
+      JSON.stringify([5,5,4,3]));
+  });
 });
